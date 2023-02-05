@@ -22,25 +22,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-class Login : ComponentActivity() {
+class SignupScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
                 Surface(
                     //surface: tela
+                    /*delegate: herança */
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Cyan
                     //diferente formatação do professor
                 ) {
-                    LoginView()
+                    SignupView()
                 }
             }
         }
     }
 }
+
 @Composable
-fun LoginView() {
+fun SignupView() {
     Column(
         //modifier para pegar toda a extensão da tela
         modifier = Modifier
@@ -78,6 +80,14 @@ fun LoginView() {
             label = { Text(text = "password") }
 
         )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = password.value,
+            onValueChange = { },
+            label = { Text(text = "password") }
+
+        )
+
 
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -90,18 +100,10 @@ fun LoginView() {
 
     }
 }
-//
-//@Composable
-//fun CenterTopBar (title: String, onProfileNavigation: ())
-//        CenterAlignedTopAppBar(function: () -> Unit) {
-//
-//}
 
-
-//preview é usado só para exibir, nao colocar componentes dentro
 @Preview
 @Composable
-fun LoginPreview() {
+fun SignupPreview() {
     MyApplicationTheme {
         Surface(
             color = Color.White,
