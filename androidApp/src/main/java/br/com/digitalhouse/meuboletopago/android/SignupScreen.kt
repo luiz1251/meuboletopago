@@ -5,10 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,7 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,11 +33,10 @@ class SignupScreen : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 Surface(
-                    //surface: tela
-                    /*delegate: herança */
+
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Cyan
-                    //diferente formatação do professor
+
                 ) {
                     SignupView()
                 }
@@ -41,66 +45,92 @@ class SignupScreen : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun SignupView() {
     Column(
-        //modifier para pegar toda a extensão da tela
+
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = Color.White)
+            .background(color = Color.White) //conferir linhas a
             .padding(25.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        //VARIÁVEIS
         val login = remember { mutableStateOf(TextFieldValue()) }
+        val password = remember { mutableStateOf(TextFieldValue()) }
+        val passwordVisible = remember { mutableStateOf(false) }
+
+
         Text(text = "MeuBoletoPago", fontWeight = FontWeight.Bold, fontSize = 32.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Cadastro", fontWeight = FontWeight.Normal, fontSize = 25.sp)
         Spacer(modifier = Modifier.height(16.dp))
 
 
-//ver diferença textfield, outline and textfieldValue
-        //user
+//        USUÁRIO
+       //Text( text = "MeuBoletoPago", textAlign = TextAlign.Start ,  fontWeight = FontWeight.Bold, fontSize = 16.sp )
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = login.value,
-            onValueChange = { },
-            label = { Text(text = "Usuario") }
-
-        )
-        val password = remember { mutableStateOf(TextFieldValue()) }
-//        Text(text = "", fontWeight = FontWeight.Bold, fontSize = 32.sp)
-//        Spacer(modifier = Modifier.height(16.dp))
-
-
-//password
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            value = password.value,
-            onValueChange = { },
-            label = { Text(text = "password") }
+            onValueChange = { login.value = it },
+            label = { Text(text = "Nome") }
 
         )
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            value = password.value,
-            onValueChange = { },
-            label = { Text(text = "password") }
+            value = login.value,
+            onValueChange = { login.value = it },
+            label = { Text(text = "Sobrenome") }
 
         )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = login.value,
+            onValueChange = { login.value = it },
+            label = { Text(text = "E-mail") }
 
+        )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = login.value,
+            onValueChange = { login.value = it },
+            label = { Text(text = "Confirmar e-mail") }
 
+        )//~~~passar por validação ~~~
+        // se o email digitado no cammpo for = ao email digitado
+        // no campo confirmar e-mail
 
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+
+            value = password.value,
+
+            onValueChange = { password.value = it },
+//            quando começar a digitar, o valor digitado - it - altera o valor inicial
+            label = { Text(text = "password") },
+//            CRIAR OS PONTINHOS
+//            //val passwordVisible
+            visualTransformation =  if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            trailingIcon = {
+                val iconPassword =
+                    if (passwordVisible.value.not()) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                val description = if (passwordVisible.value.not()) "Invisível" else "Visível"
+                IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
+                    Icon(imageVector = iconPassword, contentDescription = description)
+                }
+            }
+        )
         Spacer(modifier = Modifier.height(16.dp))
 
-        //MODIFIER: modificar tamanhos
-        Button(onClick = {/*Redirecionar para tela inicial*/}, modifier = Modifier.fillMaxWidth()){
-            Text(text = "entrar")
+        Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
+            Text(text = "Cadastrar")
         }
-
-
     }
 }
-
+//para onde vai o botão voltar?
 @Preview
 @Composable
 fun SignupPreview() {
@@ -109,8 +139,7 @@ fun SignupPreview() {
             color = Color.White,
             modifier = Modifier.fillMaxSize()
         ) {
-
-            LoginView()
+            SignupView()
         }
     }
 }

@@ -109,7 +109,7 @@ fun LoginView() {
             label = { Text(text = "password") },
 //            CRIAR OS PONTINHOS
 //            //val passwordVisible
-            visualTransformation =  if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
+            visualTransformation = if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
                 val iconPassword =
@@ -120,18 +120,24 @@ fun LoginView() {
                 }
             }
         )
-                Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
+        Button(onClick = {/*openDialog.value = true*/ }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "entrar")
         }
-        Spacer(modifier = Modifier.height(100.dp))
-
+        Spacer(modifier = Modifier.height(96.dp))
         Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
-            Text(text = "cadastra-se")
-        }
+        Text(text = "cadastra-se")
+    }
+
     }
 }
+//    Spacer(modifier = Modifier.height(100.dp))
+//
+//    Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
+////        Text(text = "cadastra-se")
+//    }
+//}
 //         leadingicon: ma frente do texto
 //        contenteDescription: acessibilidade
 //
