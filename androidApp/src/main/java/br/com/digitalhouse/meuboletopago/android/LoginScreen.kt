@@ -126,7 +126,7 @@ fun LoginView() {
             Text(text = "entrar")
         }
         Spacer(modifier = Modifier.height(96.dp))
-        Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
+        Button(onClick = {/*openDialog.value = true*/}){
         Text(text = "cadastra-se")
     }
 

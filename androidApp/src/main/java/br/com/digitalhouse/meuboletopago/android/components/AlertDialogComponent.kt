@@ -19,31 +19,49 @@ import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
 
 @Composable
 fun AlertDialogComponent (
-    openDialog: MutableState<Boolean>,
-    email: MutableState<TextFieldValue>
+//    openDialog: MutableState<Boolean>,
+//    email: MutableState<TextFieldValue>
+    showDialog: Boolean,
+    mensagem:  String,
+    onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val openDialog = remember{
-        mutableStateOf(false)
-    }
-    val email = remember { mutableStateOf(TextFieldValue()) }
+//    val showDialog = showDialog.value,
+//    val mensagem = login.value.text,
+//        onDismissRequest = {showDialog.value = false}
+//
+//    }
 
-    val context = LocalContext.current
+
+//) {
+//    val openDialog = remember{
+//        mutableStateOf(false)
+//    }
+//    val email = remember { mutableStateOf(TextFieldValue()) }
+
+//    val context = LocalContext.current
     /*se o openDialog existir, chama o Alert */
-    if (openDialog.value){
+    if (showDialog == true ){
 
         AlertDialog( /*alt e mouse mostram os atributos */
-            onDismissRequest = { openDialog.value = false},
+            modifier = modifier,
+            title = { Text(text="OPS!", color = Color.Black) },
+//            text = { Text("Seu e-mail foi enviado para  ${email.value.text}", color = Color.Black) },
+            text = { Text("$mensagem", color = Color.Black) },
+            onDismissRequest = onDismissRequest,
             /*se apertar ok, vai deixar de exibir o componente */
-            title = { Text(text="", color = Color.Black) },
-            text = { Text("Seu e-mail foi enviado para  ${email.value.text}", color = Color.Black) },
+
+
             /*botao para confirmar a ação e sumir o Dialog */
             confirmButton = {
-                TextButton(onClick = {
-                    openDialog.value = false
-                    Toast.makeText(context, "Confirmado!", Toast.LENGTH_LONG).show()
-                }
-                ) {
-                    Text("valeu, Le", color = Color.Magenta)
+                TextButton(onClick = onDismissRequest)
+
+
+//                    openDialog.value = false
+//                    Toast.makeText(context, "Confirmado!", Toast.LENGTH_LONG).show()
+
+                 {
+                    Text("valeu, Le", color = Color.Black)
                 }
             },
             backgroundColor = Color.White,
@@ -51,11 +69,6 @@ fun AlertDialogComponent (
             /*atributos do próprio AlertDialog */
 
         )
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = {openDialog.value = true}, modifier = Modifier.fillMaxWidth()){
-            Text(text = "entrar")
-        }
 
 
     }
@@ -71,7 +84,7 @@ fun AlertPreview() {
             color = Color.White,
             modifier = Modifier.fillMaxSize()
         ) {
-//            AlertDialogComponent(openDialog = openDialog, email = email)
+          AlertDialogComponent(showDialog = true, mensagem = "", onDismissRequest = { })
         }
     }
 }
