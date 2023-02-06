@@ -30,12 +30,12 @@ fun AlertDialogComponent (
 
         AlertDialog( /*alt e mouse mostram os atributos */
             modifier = modifier,
-            title = { Text(text="OPS!") },
+            title = { Text(text="") },
             text = { Text("$message", color = Color.Black) },
             onDismissRequest = onDismissRequest,
             confirmButton = {
                 TextButton(onClick = onDismissRequest) {
-                    Text("valeu, Le", color = Color.Black)
+                    Text("ok!", color = Color.Black)
                 }
             },
             backgroundColor = Color.White,

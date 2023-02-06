@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -22,6 +23,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -132,11 +135,11 @@ fun LoginView() {
                 senha = password.value.text
             )
             mensagem.value = if (loginUser.validador()) {
-                "Login executado com sucesso"
+                "Login executado com sucesso!  Seus boletos vão ter um final feliz :)"
             } else {
                 //showDialog.value = true
                 //no final do bloco, sempre lê a ultima linha (no caso, tem que ser string)
-                "Ops! Login ou senha inválida"
+                "Ops! Login ou senha inválida :("
             }
             showDialog.value = true
 
@@ -153,11 +156,13 @@ fun LoginView() {
         Button(
             onClick = {/*openDialog.value = true*/ },
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(Color(0xFF7BC59D))
-        ) {
+            border = BorderStroke(0.dp, Transparent),
+           colors = ButtonDefaults.buttonColors(backgroundColor = Transparent)  )
+                    {
+
             Text(
-                text = "cadastrar",
-                color = Color.White
+                text = "Ainda não tem cadastro? Clique aqui",
+                color = Color.Green
             )
             //Text(text = "cadastrar")
 
