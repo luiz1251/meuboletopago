@@ -9,32 +9,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.digitalhouse.meuboletopago.Greeting
+import br.com.digitalhouse.meuboletopago.android.screen.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    GreetingView(Greeting().greet())
-                }
-            }
+            LoginScreen()
         }
     }
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
+//
+//@Preview
+//@Composable
+//fun DefaultPreview() {
+//    MyApplicationTheme {
+//        GreetingView("Hello, Android!")
+//    }
+//}
