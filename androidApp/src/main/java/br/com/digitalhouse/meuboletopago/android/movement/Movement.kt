@@ -71,7 +71,7 @@ fun Movement(onBack: () -> Unit)  {
                             modifier = Modifier.fillMaxWidth(),
                             value = descricao.value,
                             onValueChange = { },
-                            label = { Text(text = "Descrição") }
+                            label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Valor")
@@ -79,7 +79,7 @@ fun Movement(onBack: () -> Unit)  {
                             modifier = Modifier.fillMaxWidth(),
                             value = descricao.value,
                             onValueChange = { },
-                            label = { Text(text = "Valor") }
+                            label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Data")
@@ -87,7 +87,7 @@ fun Movement(onBack: () -> Unit)  {
                             modifier = Modifier.fillMaxWidth(),
                             value = descricao.value,
                             onValueChange = { },
-                            label = { Text(text = "Data") }
+                            label = { Text(text = "") }
                         )
                     }
                     Spacer(modifier = Modifier.height(20.dp))
