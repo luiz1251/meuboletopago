@@ -1,4 +1,4 @@
-package br.com.digitalhouse.meuboletopago.android.detalhamento
+package br.com.digitalhouse.meuboletopago.android.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.digitalhouse.meuboletopago.android.GreetingView
+
 import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
 
 class Detalhamento : ComponentActivity() {

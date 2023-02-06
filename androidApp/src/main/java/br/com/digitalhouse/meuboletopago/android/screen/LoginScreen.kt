@@ -60,23 +60,23 @@ fun LoginView() {
 //    MyApplicationTheme {
 //
 //                Surface(modifier = Modifier.fillMaxSize()){
-                    Column(
+    Column(
 //         criar uma separação vertical
 //         modifier :  modificar o componente, estilos, espaçamentos etc
-                        modifier = Modifier
+        modifier = Modifier
 //            .fillMaxWidth()
 //            .background(color = Color.White) //conferir linhas a
-                            .padding(25.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(25.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
-                    ) {
-                        //VARIÁVEIS
-                        val login = remember { mutableStateOf(TextFieldValue()) }
-                        val password = remember { mutableStateOf(TextFieldValue()) }
-                        val passwordVisible = remember { mutableStateOf(false) }
-                        val showDialog = remember { mutableStateOf(false) }
-                        val mensagem = remember { mutableStateOf("") }
+    ) {
+        //VARIÁVEIS
+        val login = remember { mutableStateOf(TextFieldValue()) }
+        val password = remember { mutableStateOf(TextFieldValue()) }
+        val passwordVisible = remember { mutableStateOf(false) }
+        val showDialog = remember { mutableStateOf(false) }
+        val mensagem = remember { mutableStateOf("") }
 //        inicia a tela com o dialog hide
 
 //        Um componente pode ser renderizado várias vezes. Para que nao precise colocar valor
@@ -86,80 +86,87 @@ fun LoginView() {
 //        sp: size polegada (usado para fontes)
 
 
-                        Text(text = "MeuBoletoPago", fontWeight = FontWeight.Bold, fontSize = 32.sp)
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(text = "Login", fontWeight = FontWeight.Normal, fontSize = 25.sp)
-                        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "MeuBoletoPago", fontWeight = FontWeight.Bold, fontSize = 32.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Login", fontWeight = FontWeight.Normal, fontSize = 25.sp)
+        Spacer(modifier = Modifier.height(16.dp))
 
 
 //        ver diferença textfield, outline and textfieldValue - VER MATERIAL DESIGN
 //        USUÁRIO
-                        OutlinedTextField(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = login.value,
-                            onValueChange = { login.value = it },
-                            label = { Text(text = "Usuario") }
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = login.value,
+            onValueChange = { login.value = it },
+            label = { Text(text = "Usuario") }
 
-                        )
+        )
 
-                        OutlinedTextField(
-                            modifier = Modifier.fillMaxWidth(),
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
 //            /por padrão, os componentes não preenchem a tela inteira, com o fillMaxWidth, ele preenche
 //            Pode-se usar um valor de densidade que se deseja ocupar da tela/
-                            value = password.value,
+            value = password.value,
 //            /valor inicial /
-                            onValueChange = { password.value = it },
+            onValueChange = { password.value = it },
 //            quando começar a digitar, o valor digitado - it - altera o valor inicial
-                            label = { Text(text = "password") },
+            label = { Text(text = "password") },
 //            CRIAR OS PONTINHOS
 //            //val passwordVisible
-                            visualTransformation = if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                            trailingIcon = {
-                                val iconPassword =
-                                    if (passwordVisible.value.not()) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                                val description = if (passwordVisible.value.not()) "Invisível" else "Visível"
-                                IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
-                                    Icon(imageVector = iconPassword, contentDescription = description)
-                                }
-                            }
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
+            visualTransformation = if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            trailingIcon = {
+                val iconPassword =
+                    if (passwordVisible.value.not()) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                val description = if (passwordVisible.value.not()) "Invisível" else "Visível"
+                IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
+                    Icon(imageVector = iconPassword, contentDescription = description)
+                }
+            }
+        )
+        Spacer(modifier = Modifier.height(16.dp))
 
-                        Button(onClick = {/*openDialog.value = true*/ }, modifier = Modifier.fillMaxWidth()) {
-                            Text(text = "entrar")
-                        }
-                        Spacer(modifier = Modifier.height(96.dp))
-                        Button(onClick = {
-                            val loginUser = Login(
-                                login = login.value.text,
-                                senha = password.value.text
-                            )
-                            mensagem.value = if (loginUser.validador()){
-                                "Login executado com sucesso"}
-                            else {
-                                //showDialog.value = true
-                                //no final do bloco, sempre lê a ultima linha (no caso, tem que ser string)
-                                "Ops! Login ou senha inválida"
-                            }
-                            showDialog.value = true
+        Button(onClick = {
+            val loginUser = Login(
+                login = login.value.text,
+                senha = password.value.text
+            )
+            mensagem.value = if (loginUser.validador()) {
+                "Login executado com sucesso"
+            } else {
+                //showDialog.value = true
+                //no final do bloco, sempre lê a ultima linha (no caso, tem que ser string)
+                "Ops! Login ou senha inválida"
+            }
+            showDialog.value = true
 
-                        }, modifier = Modifier.fillMaxWidth()){
-                            Text(text = "cadastra-se")
-                        }
-                        AlertDialogComponent(
-                            showDialog = showDialog.value,
-                            message = mensagem.value,
-                            onDismissRequest = {showDialog.value = false}
+        }, modifier = Modifier.fillMaxWidth()) {
+            Text(text = "entrar")
+        }
+        AlertDialogComponent(
+            showDialog = showDialog.value,
+            message = mensagem.value,
+            onDismissRequest = { showDialog.value = false }
 
-                        )
+        )
+        Spacer(modifier = Modifier.height(256.dp))
+        Button(
+            onClick = {/*openDialog.value = true*/ },
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color(0xFF7BC59D))
+        ) {
+            Text(
+                text = "cadastrar",
+                color = Color.White
+            )
+            //Text(text = "cadastrar")
 
-                    }
+
+        }
     }
 
 
-
-
+}
 @Preview
 @Composable
 fun LoginPreview() {
