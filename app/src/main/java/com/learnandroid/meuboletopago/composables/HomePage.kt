@@ -54,6 +54,17 @@ fun HomePage(navController: NavController){
             verticalArrangement = Arrangement.Center
         ){
 
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
+            listCard
             }
 
         }

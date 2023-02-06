@@ -161,10 +161,10 @@ fun RegisterPage(navController: NavController) {
                             IconButton(onClick = {
                                 confirmPasswordVisibility.value = !confirmPasswordVisibility.value
                             }) {
-                                /*Icon(
+                                Icon(
                                     imageVector = vectorResource(id = R.drawable.password_eye),
                                     tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
-                                )*/
+                                )
                             }
                         },
                         visualTransformation = if (confirmPasswordVisibility.value) VisualTransformation.None
