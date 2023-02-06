@@ -70,8 +70,7 @@ fun SignupView() {
         Spacer(modifier = Modifier.height(16.dp))
 
 
-//        USUÁRIO
-       //Text( text = "MeuBoletoPago", textAlign = TextAlign.Start ,  fontWeight = FontWeight.Bold, fontSize = 16.sp )
+//
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = login.value,
@@ -99,9 +98,7 @@ fun SignupView() {
             onValueChange = { login.value = it },
             label = { Text(text = "Confirmar e-mail") }
 
-        )//~~~passar por validação ~~~
-        // se o email digitado no cammpo for = ao email digitado
-        // no campo confirmar e-mail
+        )
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -109,10 +106,9 @@ fun SignupView() {
             value = password.value,
 
             onValueChange = { password.value = it },
-//            quando começar a digitar, o valor digitado - it - altera o valor inicial
+
             label = { Text(text = "password") },
-//            CRIAR OS PONTINHOS
-//            //val passwordVisible
+
             visualTransformation =  if (passwordVisible.value.not()) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
@@ -131,7 +127,7 @@ fun SignupView() {
         }
     }
 }
-//para onde vai o botão voltar?
+
 @Preview
 @Composable
 fun SignupPreview() {

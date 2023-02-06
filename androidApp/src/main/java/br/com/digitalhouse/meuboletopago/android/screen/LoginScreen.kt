@@ -60,12 +60,9 @@ class LoginScreen : ComponentActivity() {
 
 @Composable
 fun LoginView() {
-//    MyApplicationTheme {
-//
-//                Surface(modifier = Modifier.fillMaxSize()){
+
     Column(
-//         criar uma separação vertical
-//         modifier :  modificar o componente, estilos, espaçamentos etc
+//
         modifier = Modifier
 //            .fillMaxWidth()
 //            .background(color = Color.White) //conferir linhas a
@@ -80,13 +77,6 @@ fun LoginView() {
         val passwordVisible = remember { mutableStateOf(false) }
         val showDialog = remember { mutableStateOf(false) }
         val mensagem = remember { mutableStateOf("") }
-//        inicia a tela com o dialog hide
-
-//        Um componente pode ser renderizado várias vezes. Para que nao precise colocar valor
-//        direto na variável em caso de valores mutáveis, usa-se o remember para que ele guarde
-//        o valor. A variável vai ser um valor de TextField e ela é mutável, seu estado pode mudar
-//        dp: densidade por polegada (utilizado para aquilo que não for fonte)
-//        sp: size polegada (usado para fontes)
 
 
         Text(text = "MeuBoletoPago", fontWeight = FontWeight.Bold, fontSize = 32.sp)
@@ -137,8 +127,7 @@ fun LoginView() {
             mensagem.value = if (loginUser.validador()) {
                 "Login executado com sucesso!  Seus boletos vão ter um final feliz :)"
             } else {
-                //showDialog.value = true
-                //no final do bloco, sempre lê a ultima linha (no caso, tem que ser string)
+
                 "Ops! Login ou senha inválida :("
             }
             showDialog.value = true
@@ -156,15 +145,15 @@ fun LoginView() {
         Button(
             onClick = {/*openDialog.value = true*/ },
             modifier = Modifier.fillMaxWidth(),
-            border = BorderStroke(0.dp, Transparent),
+//            border = BorderStroke(1.dp, Color(0xFF369B73)),
            colors = ButtonDefaults.buttonColors(backgroundColor = Transparent)  )
                     {
 
             Text(
                 text = "Ainda não tem cadastro? Clique aqui",
-                color = Color.Green
+                color = Color(0xFF369B73)
             )
-            //Text(text = "cadastrar")
+
 
 
         }
