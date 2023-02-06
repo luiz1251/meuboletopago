@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "br.com.digitalhouse.meuboletopago.android"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         applicationId = "br.com.digitalhouse.meuboletopago.android"
         minSdk = 24
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -39,4 +39,6 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.2.1")
     implementation("androidx.compose.material:material:1.2.1")
     implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.compose.material3:material3:1.0.1")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.5.3")
 }
