@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,12 +35,15 @@ fun Movement(onBack: () -> Unit)  {
                 item {
                     Row(
                         Modifier.selectableGroup(),
-                        verticalAlignment = Alignment.CenterVertically) {
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Spacer(modifier = Modifier.weight(1f))
                         RadioButton(
                             selected = state,
                             onClick = { state = true },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
@@ -51,54 +55,61 @@ fun Movement(onBack: () -> Unit)  {
                         RadioButton(
                             selected = !state,
                             onClick = { state = false },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
                             )
                         )
-                        Text(text = "Despesa",
-                            textAlign = TextAlign.Center)
+                        Text(
+                            text = "Despesa",
+                            textAlign = TextAlign.Center
+                        )
                         Spacer(modifier = Modifier.weight(1f))
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Column{
-                        val descricao = remember { mutableStateOf("") }
-                        val valor = remember { mutableStateOf(Double) }
-                        val data = remember { mutableStateOf(LocalDate.now())}
+                    Column {
+                        val descricao = remember { mutableStateOf(TextFieldValue()) }
+                        val valor = remember { mutableStateOf(TextFieldValue()) }
+                        val data = remember { mutableStateOf(TextFieldValue()) }
                         Text(text = "Descrição")
                         TextField(
                             modifier = Modifier.fillMaxWidth(),
                             value = descricao.value,
-                            onValueChange = { },
+                            onValueChange = { descricao.value = it },
                             label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Valor")
                         TextField(
                             modifier = Modifier.fillMaxWidth(),
-                            value = descricao.value,
-                            onValueChange = { },
+                            value = valor.value,
+                            onValueChange = { valor.value = it },
                             label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Data")
                         TextField(
                             modifier = Modifier.fillMaxWidth(),
-                            value = descricao.value,
-                            onValueChange = { },
+                            value = data.value,
+                            onValueChange = { data.value = it },
                             label = { Text(text = "") }
                         )
                     }
                     Spacer(modifier = Modifier.height(20.dp))
                     Row(
                         Modifier.selectableGroup(),
-                        verticalAlignment = Alignment.CenterVertically) {
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Spacer(modifier = Modifier.weight(1f))
                         RadioButton(
                             selected = state2,
                             onClick = { state2 = true },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
@@ -110,25 +121,32 @@ fun Movement(onBack: () -> Unit)  {
                         RadioButton(
                             selected = !state2,
                             onClick = { state2 = false },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
                             )
                         )
-                        Text(text = "Repetir",
-                            textAlign = TextAlign.Center)
+                        Text(
+                            text = "Repetir",
+                            textAlign = TextAlign.Center
+                        )
                         Spacer(modifier = Modifier.weight(1f))
                     }
                     Spacer(modifier = Modifier.height(20.dp))
                     Row(
                         Modifier.selectableGroup(),
-                        verticalAlignment = Alignment.CenterVertically) {
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Spacer(modifier = Modifier.weight(1f))
                         RadioButton(
                             selected = state3,
                             onClick = { state3 = true },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
@@ -140,15 +158,27 @@ fun Movement(onBack: () -> Unit)  {
                         RadioButton(
                             selected = !state3,
                             onClick = { state3 = false },
-                            modifier = Modifier.semantics { contentDescription = "Localized Description" },
+                            modifier = Modifier.semantics {
+                                contentDescription = "Localized Description"
+                            },
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color(0xFF7BC59D),
                                 unselectedColor = Color.LightGray
                             )
                         )
-                        Text(text = "Parcelado",
-                            textAlign = TextAlign.Center)
+                        Text(
+                            text = "Parcelado",
+                            textAlign = TextAlign.Center
+                        )
                         Spacer(modifier = Modifier.weight(1f))
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Text(text = "Salvar")
                     }
                 }
             }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
@@ -28,22 +29,22 @@ fun Edit(onBack: () -> Unit)  {
                 item {
                     Spacer(modifier = Modifier.height(20.dp))
                     Column{
-                        val descricao = remember { mutableStateOf("") }
-                        val valor = remember { mutableStateOf(Double) }
-                        val data = remember { mutableStateOf(LocalDate.now()) }
+                        val descricao = remember { mutableStateOf(TextFieldValue()) }
+                        val valor = remember { mutableStateOf(TextFieldValue()) }
+                        val data = remember { mutableStateOf(TextFieldValue()) }
                         Text(text = "Descrição")
                         TextField(
                             modifier = Modifier.fillMaxWidth(),
                             value = descricao.value,
-                            onValueChange = { },
+                            onValueChange = { descricao.value = it },
                             label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Valor")
                         TextField(
                             modifier = Modifier.fillMaxWidth(),
-                            value = descricao.value,
-                            onValueChange = { },
+                            value = valor.value,
+                            onValueChange = { valor.value = it },
                             label = { Text(text = "") }
                         )
                         Spacer(modifier = Modifier.height(20.dp))
@@ -51,8 +52,8 @@ fun Edit(onBack: () -> Unit)  {
                         TextField(
                             modifier = Modifier
                                 .fillMaxWidth(),
-                            value = descricao.value,
-                            onValueChange = { },
+                            value = data.value,
+                            onValueChange = { data.value = it },
                             label = { Text(text = "") }
                         )
                     }
