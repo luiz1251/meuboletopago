@@ -1,5 +1,6 @@
 package br.com.digitalhouse.meuboletopago.android
 
+import AlertDialogComponent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -68,6 +69,8 @@ fun LoginView() {
         val login = remember { mutableStateOf(TextFieldValue()) }
         val password = remember { mutableStateOf(TextFieldValue()) }
         val passwordVisible = remember { mutableStateOf(false) }
+        val showDialog = remember { mutableStateOf(false) }
+        val mensagem = remember { mutableStateOf("") }
 //        inicia a tela com o dialog hide
 
 //        Um componente pode ser renderizado várias vezes. Para que nao precise colocar valor
@@ -93,11 +96,6 @@ fun LoginView() {
 
         )
 
-//        Text(text = "dffdf", fontWeight = FontWeight.Bold, fontSize = 32.sp)
-//        Spacer(modifier = Modifier.height(16.dp))
-//        Componente para caixa de texto de inserção
-//        PASSWORD
-//  val passwordVisible = remember { mutableStateOf(TextFieldValue()) }
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
 //            /por padrão, os componentes não preenchem a tela inteira, com o fillMaxWidth, ele preenche
@@ -129,50 +127,16 @@ fun LoginView() {
         Button(onClick = {/*openDialog.value = true*/}){
         Text(text = "cadastra-se")
     }
+        AlertDialogComponent(
+            showDialog = showDialog.value,
+            mensagem = mensagem.value,
+            onDismissRequest = {showDialog.value = false}
+
+    )
 
     }
 }
-//    Spacer(modifier = Modifier.height(100.dp))
-//
-//    Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
-////        Text(text = "cadastra-se")
-//    }
-//}
-//         leadingicon: ma frente do texto
-//        contenteDescription: acessibilidade
-//
-//        KeyboardType password -> nao tem autocomplete
-//            if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
-//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-//            trailingIcon = {
-//                val image =
-//                    if (passwordVisible.value.not()) IPasswordVisualTransformation() else VisualTransformation.None
-//
-//                val description =
-//                    if (passwordVisible.value) "Hide password" else "Show password"
-//
-//                IconButton(onClick = {passwordVisible.value = !passwordVisible.value}){
-//                    Icon(imageVector = image, description)
-//                }
-//
-//            }
-//        )
-//ACESSIBILIDADE
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        Button(onClick = {/*openDialog.value = true*/}, modifier = Modifier.fillMaxWidth()){
-//            Text(text = "entrar")
-//        }
-//
-//
-//
-//    }
-//}
-//
-//
-//
-//
-//preview é usado só para exibir
+
 @Preview
 @Composable
 fun LoginPreview() {
@@ -188,8 +152,3 @@ fun LoginPreview() {
     }
 }
 
-// 1) Ver se valores alteram
-// 2) ver se a senha esconde os caracteres
-// 3) fazer "mostrar a senha"
-// 4) alert : cadastro realizado com sucesso, email v
-// 5) botão cadastre-se

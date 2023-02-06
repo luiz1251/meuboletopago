@@ -19,48 +19,22 @@ import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
 
 @Composable
 fun AlertDialogComponent (
-//    openDialog: MutableState<Boolean>,
-//    email: MutableState<TextFieldValue>
+
     showDialog: Boolean,
     mensagem:  String,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    val showDialog = showDialog.value,
-//    val mensagem = login.value.text,
-//        onDismissRequest = {showDialog.value = false}
-//
-//    }
 
-
-//) {
-//    val openDialog = remember{
-//        mutableStateOf(false)
-//    }
-//    val email = remember { mutableStateOf(TextFieldValue()) }
-
-//    val context = LocalContext.current
-    /*se o openDialog existir, chama o Alert */
-    if (showDialog == true ){
+    if (showDialog){
 
         AlertDialog( /*alt e mouse mostram os atributos */
             modifier = modifier,
             title = { Text(text="OPS!", color = Color.Black) },
-//            text = { Text("Seu e-mail foi enviado para  ${email.value.text}", color = Color.Black) },
             text = { Text("$mensagem", color = Color.Black) },
             onDismissRequest = onDismissRequest,
-            /*se apertar ok, vai deixar de exibir o componente */
-
-
-            /*botao para confirmar a ação e sumir o Dialog */
             confirmButton = {
-                TextButton(onClick = onDismissRequest)
-
-
-//                    openDialog.value = false
-//                    Toast.makeText(context, "Confirmado!", Toast.LENGTH_LONG).show()
-
-                 {
+                TextButton(onClick = onDismissRequest) {
                     Text("valeu, Le", color = Color.Black)
                 }
             },
@@ -78,13 +52,7 @@ fun AlertDialogComponent (
 
 @Preview
 @Composable
-fun AlertPreview() {
-    MyApplicationTheme {
-        Surface(
-            color = Color.White,
-            modifier = Modifier.fillMaxSize()
-        ) {
+fun AlertDialogComponent_Preview() {
+
           AlertDialogComponent(showDialog = true, mensagem = "", onDismissRequest = { })
         }
-    }
-}

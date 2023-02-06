@@ -35,7 +35,7 @@ class SignupScreen : ComponentActivity() {
                 Surface(
 
                     modifier = Modifier.fillMaxSize(),
-                    color = Color.Cyan
+                    color = MaterialTheme.colors.background
 
                 ) {
                     SignupView()
