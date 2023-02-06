@@ -21,7 +21,7 @@ import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
 fun AlertDialogComponent (
 
     showDialog: Boolean,
-    mensagem:  String,
+    message:  String,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -30,8 +30,8 @@ fun AlertDialogComponent (
 
         AlertDialog( /*alt e mouse mostram os atributos */
             modifier = modifier,
-            title = { Text(text="OPS!", color = Color.Black) },
-            text = { Text("$mensagem", color = Color.Black) },
+            title = { Text(text="OPS!") },
+            text = { Text("$message", color = Color.Black) },
             onDismissRequest = onDismissRequest,
             confirmButton = {
                 TextButton(onClick = onDismissRequest) {
@@ -54,5 +54,5 @@ fun AlertDialogComponent (
 @Composable
 fun AlertDialogComponent_Preview() {
 
-          AlertDialogComponent(showDialog = true, mensagem = "", onDismissRequest = { })
+          AlertDialogComponent(true, "teste", {})
         }
