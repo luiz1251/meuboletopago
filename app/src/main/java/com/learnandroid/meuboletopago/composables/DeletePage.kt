@@ -1,8 +1,11 @@
 package com.learnandroid.meuboletopago.composables
 
+import android.content.Context
+import android.os.Handler
 import androidx.compose.foundation.BorderStroke
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -23,85 +26,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.learnandroid.meuboletopago.ui.theme.primaryColor
 
-
-/*@Composable
-fun showDialog(navController: NavController, context: Context) : Boolean {
-    var openDialog = remember { mutableStateOf(true) }
-    val context = LocalC
-    if (openDialog.value) {
-        AlertDialog(
-            onDismissRequest = { openDialog.value = false },
-            title = { Text(text = "Atenção!") },
-            text = { Text(text = "Confirma a exclusão?") },
-            confirmButton = {
-                TextButton(onClick = {
-                    openDialog.value = false
-                    Toast.makeText(context, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
-                    navController.navigate("login_page")
-                    Toast.makeText(context, "Registro Excluído", Toast.LENGTH_SHORT).show()
-                }) {
-                    Text(text = "Confirmar", color = Color.White)
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    openDialog.value = false
-                    Toast.makeText(context, "Solicitação Cancelada", Toast.LENGTH_SHORT).show()
-                }) {
-                    Text(text = "Cancelar", color = Color.White)
-                }
-            },
-            backgroundColor = primaryColor,
-            contentColor = Color.White
-        )
-
-    }
-    return openDialog
-
-}*/
-
-
-/*@Composable
-fun Alert(){
-    var openDialog = remember { mutableStateOf(true) }
-
-    if (openDialog.value) {
-        AlertDialog(
-            onDismissRequest = { openDialog.value = false },
-            title = { Text(text = "Atenção!") },
-            text = { Text(text = "Confirma a exclusão?") },
-            confirmButton = {
-                TextButton(onClick = {
-                    openDialog.value = false
-                    //Toast.makeText(context, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
-                    //navController.navigate("login_page")
-                   // Toast.makeText(context, "Registro Excluído", Toast.LENGTH_SHORT).show()
-                }) {
-                    Text(text = "Confirmar", color = Color.White)
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    openDialog.value = false
-                    //Toast.makeText(context, "Solicitação Cancelada", Toast.LENGTH_SHORT).show()
-                }) {
-                    Text(text = "Cancelar", color = Color.White)
-                }
-            },
-            backgroundColor = primaryColor,
-            contentColor = Color.White
-        )
-
-    }
-
-}*/
-
-
 @Composable
-fun DeletePage(navController: NavController) {
+fun DeletePage(navController: NavController, ctx: Context) {
 
     var dialogShow = remember { mutableStateOf(false) }
-    val context = AmbientContext.current
+
+
 
 
     Scaffold(
@@ -151,34 +81,34 @@ fun DeletePage(navController: NavController) {
 
                         OutlinedButton(
                             onClick = {
-                                Toast.makeText(context, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
-                                navController.navigate("login_page")
-                                Toast.makeText(context, "Registro Excluído", Toast.LENGTH_SHORT).show()
-                                },
+                                Toast.makeText(ctx, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
+                                navController.navigate("home_page")
+                                Toast.makeText(ctx, "Registro Excluído", Toast.LENGTH_SHORT).show()
+                            },
                             border = BorderStroke(
-                            width = 2.dp,
-                            color = primaryColor
+                                width = 2.dp,
+                                color = primaryColor
                             )
                         ){
                             Icon(
                                 Icons.Default.Delete,
-                             )
+                            )
                             Text(text = "Excluir esse registro")
                         }
                         }
 
                         Spacer(modifier = Modifier.padding(5.dp))
 
-                        OutlinedButton(
-                            onClick = {
-                                Toast.makeText(context, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
-                                navController.navigate("login_page")
-                                Toast.makeText(context, "Registro Excluído", Toast.LENGTH_SHORT).show()
-                                      },
-                            border = BorderStroke(
-                                width = 2.dp,
-                                color = primaryColor
-                            )
+                    OutlinedButton(
+                        onClick = {
+                            Toast.makeText(ctx, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
+                            navController.navigate("home_page")
+                            Toast.makeText(ctx, "Registro Excluído", Toast.LENGTH_SHORT).show()
+                        },
+                        border = BorderStroke(
+                            width = 2.dp,
+                            color = primaryColor
+                        )
                         ){
                             Icon(
                                 Icons.Default.Delete,
@@ -194,8 +124,81 @@ fun DeletePage(navController: NavController) {
         }
 
 
+/*
+@Composable
+fun showDialog(navController: NavController, ctx: Context) : Boolean {
+    var openDialog = remember { mutableStateOf(true) }
+
+    if (openDialog.value) {
+        AlertDialog(
+            onDismissRequest = { openDialog.value = false },
+            title = { Text(text = "Atenção!") },
+            text = { Text(text = "Confirma a exclusão?") },
+            confirmButton = {
+                TextButton(onClick = {
+                    openDialog.value = false
+                    Toast.makeText(ctx, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
+                    navController.navigate("login_page")
+                    Toast.makeText(ctx, "Registro Excluído", Toast.LENGTH_SHORT).show()
+                }) {
+                    Text(text = "Confirmar", color = Color.White)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    openDialog.value = false
+                    Toast.makeText(ctx, "Solicitação Cancelada", Toast.LENGTH_SHORT).show()
+                }) {
+                    Text(text = "Cancelar", color = Color.White)
+                }
+            },
+            backgroundColor = primaryColor,
+            contentColor = Color.White
+        )
+
+    }
+    return openDialog.value
+
+}
 
 
+
+
+
+@Composable
+fun Alert(navController: NavController, ctx: Context){
+    var openDialog = remember { mutableStateOf(true) }
+
+    if (openDialog.value) {
+        AlertDialog(
+            onDismissRequest = { openDialog.value = false },
+            title = { Text(text = "Atenção!") },
+            text = { Text(text = "Confirma a exclusão? Não será possível desfazer essa operação!") },
+            confirmButton = {
+                TextButton(onClick = {
+                    openDialog.value = false
+                    Toast.makeText(ctx, "Solicitação Confirmada", Toast.LENGTH_SHORT).show()
+                    navController.navigate("home_page")
+                   Toast.makeText(ctx, "Registro Excluído", Toast.LENGTH_SHORT).show()
+                }) {
+                    Text(text = "Confirmar", color = Color.White)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    openDialog.value = false
+                    Toast.makeText(ctx, "Solicitação Cancelada", Toast.LENGTH_SHORT).show()
+                }) {
+                    Text(text = "Cancelar", color = Color.White)
+                }
+            },
+            backgroundColor = primaryColor,
+            contentColor = Color.White
+        )
+
+    }
+
+}*/
 
 
 

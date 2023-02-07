@@ -104,7 +104,7 @@ fun UpdatePage(navController: NavController) {
                             value = date.value,
                             onValueChange = { date.value = it },
                             label = { Text(text = "Data") },
-                            placeholder = { Text(text = "Data") },
+                            placeholder = { Text(text = "dd/mm/aa") },
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth(0.8f),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -114,7 +114,7 @@ fun UpdatePage(navController: NavController) {
                         Spacer(modifier = Modifier.padding(10.dp))
                         Button(
                             onClick = {
-                                navController.navigate("delete_page")
+                                navController.navigate("home_page")
                                 Toast.makeText(context, "Registro Salvo", Toast.LENGTH_SHORT).show()
                             },
                             modifier = Modifier

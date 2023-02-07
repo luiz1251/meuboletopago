@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    //id 'kotlin-android-extension'
 }
 
 android {
@@ -59,6 +60,7 @@ dependencies {
 
     //Compose Navigation Dependency
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha05"
+    //implementation "org.jetbrains.kotlin-stdlib:1.4.32"
     //implementation "androidx.navigation: navegation-compose: 2.4.0-alpha06"
 
 

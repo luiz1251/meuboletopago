@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MeuBoletoPago</string>
+    <string name="dica1">1. Faça orçamentos e tente gastar menos do que você ganha.</string>
+    <string name="dica2">2. Poupe e invista dinheiro regularmente.</string>
+    <string name="dica3">3. Aumente sua renda, procurando trabalhos extras, negócios paralelos ou aumentando sua educação/qualificação para aumentar seus rendimentos.</string>
+    <string name="dica4">4. Reduza suas dívidas, pagando-as o mais rápido possível.</string>
+    <string name="dica5">5. Seja inteligente com suas compras, comparando preços e procurando descontos.</string>
+    <string name="dica6">6. Tenha metas financeiras claras e trabalhe para alcançá-las.</string>
+    <string name="dica7">7. Busque conselhos financeiros e educação financeira para aprender como gerenciar seu dinheiro de maneira eficaz.</string>
+
 </resources>

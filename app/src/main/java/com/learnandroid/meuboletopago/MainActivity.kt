@@ -1,5 +1,6 @@
 package com.learnandroid.meuboletopago
 
+import android.content.Context
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         setContent {
             LoginApplicationTheme {
-                Application()
+                Application(ctx = this@MainActivity)
             }
         }
     }
