@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import br.com.digitalhouse.meuboletopago.Greeting
 import br.com.digitalhouse.meuboletopago.android.edit.Edit
 import br.com.digitalhouse.meuboletopago.android.movement.Movement
+import br.com.digitalhouse.meuboletopago.android.screen.LoginScreen
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
