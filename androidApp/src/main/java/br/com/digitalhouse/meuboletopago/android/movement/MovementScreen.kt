@@ -10,25 +10,26 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
-import br.com.digitalhouse.meuboletopago.android.component.CenterTopBar
-import java.time.LocalDate
+import br.com.digitalhouse.meuboletopago.android.component.TopBar
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Movement(onBack: () -> Unit)  {
+fun MovementScreen(navController: NavController)  {
     var state by remember { mutableStateOf(true) }
     var state2 by remember { mutableStateOf(true) }
     var state3 by remember { mutableStateOf(true) }
     MyApplicationTheme() {
         Scaffold (
-            topBar = { CenterTopBar(title = "Movimentação", onProfileNavigation = {}, onBack = {})}
+            topBar = { TopBar(title = "Movimentação", navController = navController)}
         ) {
             LazyColumn(
                 modifier = Modifier.padding(it)) {
@@ -187,6 +188,9 @@ fun Movement(onBack: () -> Unit)  {
 }
 
 
-@Preview
-@Composable
-fun Movement_Preview(){}
+//@RequiresApi(Build.VERSION_CODES.O)
+//@Preview
+//@Composable
+//fun MovementScreen_Preview(){
+//    MovementScreen()
+//}

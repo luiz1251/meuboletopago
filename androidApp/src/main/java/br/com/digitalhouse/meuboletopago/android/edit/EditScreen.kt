@@ -10,19 +10,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.digitalhouse.meuboletopago.android.MyApplicationTheme
 import br.com.digitalhouse.meuboletopago.android.component.CenterTopBar
-import java.time.LocalDate
+import br.com.digitalhouse.meuboletopago.android.component.TopBar
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Edit(onBack: () -> Unit)  {
+fun EditScreen()  {
     var state by remember { mutableStateOf(true) }
     var state2 by remember { mutableStateOf(true) }
     var state3 by remember { mutableStateOf(true) }
     MyApplicationTheme() {
         Scaffold (
-            topBar = { CenterTopBar(title = "Edição", onProfileNavigation = {}, onBack = {}) }
+            topBar = { TopBar(title = "Edição") }
         ) {
             LazyColumn(
                 modifier = Modifier.padding(it)) {
@@ -74,4 +75,4 @@ fun Edit(onBack: () -> Unit)  {
 
 @Preview
 @Composable
-fun Edit_Preview(){}
+fun EditScreen_Preview(){}

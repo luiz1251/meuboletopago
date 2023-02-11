@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -17,7 +18,13 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -48,7 +55,7 @@ kotlin {
 
 android {
     namespace = "br.com.digitalhouse.meuboletopago"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         minSdk = 24
         targetSdk = 32

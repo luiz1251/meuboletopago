@@ -1,4 +1,4 @@
-package br.com.digitalhouse.meuboletopago.android.screen
+package br.com.digitalhouse.meuboletopago.android.detailing
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
